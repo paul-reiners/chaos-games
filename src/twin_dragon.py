@@ -30,7 +30,7 @@ def main(n):
             x = w_1(x)
         else:
             x = w_2(x)
-    plt.scatter(xs, ys)
+    plt.scatter(xs, ys, 1)
     plt.savefig('../img/twin_dragon.png')
     plt.show()
 
