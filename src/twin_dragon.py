@@ -17,8 +17,6 @@ def w_2(x):
     return np.matmul(M_inv, np.add(x, d_1))
 
 def main(n):
-    # plt.xlim([-1.0, 1.0])
-    # plt.ylim([0.0, 1.75])
     xs = [0.0] * n
     ys = [0.0] * n
     x = d_0
