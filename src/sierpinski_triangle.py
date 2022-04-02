@@ -33,7 +33,7 @@ def main(n):
             x = w_2(x)
         else:
             x = w_3(x)
-    plt.scatter(xs, ys)
+    plt.scatter(xs, ys, 1)
     plt.savefig('../img/sierpinski_triangle.png')
     plt.show()
 
