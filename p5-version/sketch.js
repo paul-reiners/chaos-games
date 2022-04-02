@@ -1,19 +1,19 @@
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(600, 600);
 }
 
 
 function w(x, attractor) {
     let compression_ratio = attractor.compression_ratio;
     return [compression_ratio * x[0] + (1.0 - compression_ratio) * attractor['point'][0], 
-            compression_ratio * x[0] + (1.0 - compression_ratio) * attractor['point'][0]];
+            compression_ratio * x[1] + (1.0 - compression_ratio) * attractor['point'][1]];
 }
 
 
 
 function ifsp(attractors, n) {
-    xs = [0.0] * n;
-    ys = [0.0] * n;
+    xs = new Array(n).fill(0);
+    ys = new Array(n).fill(0);
     x = attractors[0]['point'];
     m = attractors.length;
     for (i = 0; i < n; i++) {
@@ -48,8 +48,9 @@ function draw() {
        {"point": vs[1], "compression_ratio": 0.5, "probability": 1.0 / 3.0}, 
        {"point": vs[2], "compression_ratio": 0.5, "probability": 1.0 / 3.0}];
     result = ifsp(attractors, 1000);
-    console.log(result);
     for (i = 0; i < result[0].length; i++) {
-      point(200 * Number.toFixed(result[0][i]), 200 * Number.toFixed(result[1][i]));
+      x = Math.round(200 * (result[0][i] + 1.0))
+      y = Math.round(200 * (result[1][i] + 0.5))
+      point(x, y);
     }
 }
