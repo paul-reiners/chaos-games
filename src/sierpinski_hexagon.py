@@ -20,7 +20,7 @@ def main(n):
         ys[i] = x[1]
         r = random.randint(0, 5)
         x = w(x, r)
-    plt.scatter(xs[4:], ys[4:])
+    plt.scatter(xs[4:], ys[4:], 1)
     plt.savefig('../img/sierpinski_hexagon.png')
     plt.show()
 
