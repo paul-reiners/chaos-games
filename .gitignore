@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 /.idea/
 /p5.js
+/math.js
