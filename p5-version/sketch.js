@@ -25,11 +25,7 @@ function ifsp(attractors, n) {
         for (j = 0; j < m; j++) {
             prob_sum += attractors[j]['probability'];
             if (prob_sum >= r) {
-                if (prob_sum > r) {
-                    attractor_index = j - 1
-                } else {
-                    attractor_index = j
-                }
+                attractor_index = j
 
                 break;
             }
