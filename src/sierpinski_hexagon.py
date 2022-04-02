@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 def main(n):
-    v = [[math.sin(i * 2.0 * math.pi / 6), math.cos(i * 2.0 * math.pi / 6)] for i in range(6)]
+    v = [[math.sin(i * math.pi / 3.0), math.cos(i * math.pi / 3.0)] for i in range(6)]
 
     def w(x, j):
         return [(x[i] + 5 * v[j][i]) / 6.0 for i in range(2)]
