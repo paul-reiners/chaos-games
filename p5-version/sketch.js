@@ -2,30 +2,33 @@ function setup() {
   createCanvas(400, 400);
 }
 
-function ifsp(attractors, n) {
-    function w(x, attractor) {
-        compression_ratio = attractor['compression_ratio'];
-        return [compression_ratio * x[0] + (1.0 - compression_ratio) * attractor['point'][0], 
-                compression_ratio * x[0] + (1.0 - compression_ratio) * attractor['point'][0]];
-      }
 
+function w(x, attractor) {
+    let compression_ratio = attractor.compression_ratio;
+    return [compression_ratio * x[0] + (1.0 - compression_ratio) * attractor['point'][0], 
+            compression_ratio * x[0] + (1.0 - compression_ratio) * attractor['point'][0]];
+}
+
+
+
+function ifsp(attractors, n) {
     xs = [0.0] * n;
     ys = [0.0] * n;
     x = attractors[0]['point'];
-    m = len(attractors);
+    m = attractors.length;
     for (i = 0; i < n; i++) {
         xs[i] = x[0];
         ys[i] = x[1];
         prob_sum = 0.0;
-        attractor_index = None;
-        r = random.random();
-        for i in range(m) {
-            prob_sum += attractors[i]['probability'];
+        attractor_index = null;
+        r = Math.random();
+        for (j = 0; j < m; j++) {
+            prob_sum += attractors[j]['probability'];
             if (prob_sum >= r) {
                 if (prob_sum > r) {
-                    attractor_index = i - 1
+                    attractor_index = j - 1
                 } else {
-                    attractor_index = i
+                    attractor_index = j
                 }
 
                 break;
@@ -33,7 +36,8 @@ function ifsp(attractors, n) {
         }
         x = w(x, attractors[attractor_index]);
       }
-     return [xs[20:], ys[20:]];
+     
+     return [xs.slice(20), ys.slice(20)];
   }
 
 
@@ -44,8 +48,12 @@ function draw() {
   vs = [v_1, v_2, v_3];
 
     let attractors = 
-      [{'point': vs[0], 'compression_ratio': 0.5, 'probability': 1.0 / 3.0}, 
-       {'point': vs[1], 'compression_ratio': 0.5, 'probability': 1.0 / 3.0}, 
-       {'point': vs[2], 'compression_ratio': 0.5, 'probability': 1.0 / 3.0}];
-    ifsp(attractors, 1000);
+      [{"point": vs[0], "compression_ratio": 0.5, "probability": 1.0 / 3.0}, 
+       {"point": vs[1], "compression_ratio": 0.5, "probability": 1.0 / 3.0}, 
+       {"point": vs[2], "compression_ratio": 0.5, "probability": 1.0 / 3.0}];
+    result = ifsp(attractors, 1000);
+    console.log(result);
+    for (i = 0; i < result[0].length; i++) {
+      point(200 * Number.toFixed(result[0][i]), 200 * Number.toFixed(result[1][i]));
+    }
 }
