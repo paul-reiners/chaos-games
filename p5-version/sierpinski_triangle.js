@@ -1,4 +1,4 @@
-function get_sierpinski_attractors() {
+function get_sierpinski_triangle_attractors() {
   v_1 = [-1.0, 0.0];
   v_2 = [1.0, 0.0];
   v_3 = [0.0, Math.sqrt(3.0)];
